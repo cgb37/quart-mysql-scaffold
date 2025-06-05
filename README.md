@@ -1,0 +1,1 @@
+# quart-mysql-scaffold
