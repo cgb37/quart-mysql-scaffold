@@ -1,0 +1,83 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - QUART_ENV=development
+      - DATABASE_URL=mysql+aiomysql://quart_user:quart_password@db:3306/quart_db
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/.pytest_cache
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - quart-network
+    restart: unless-stopped
+    command: python -m hypercorn app:app --bind 0.0.0.0:5000 --reload
+
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=quart_db
+      - MYSQL_USER=quart_user
+      - MYSQL_PASSWORD=quart_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - quart-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "quart_user", "-pquart_password"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+      start_period: 40s
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - quart-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  nginx:
+    platform: linux/amd64
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - web
+    networks:
+      - quart-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  quart-network:
+    driver: bridge

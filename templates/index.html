@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Quart MySQL Scaffold{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="gradient-bg text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Modern Web Development
+            <span class="block text-yellow-300">Made Simple</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto">
+            A production-ready scaffold built with Quart, MySQL, and Docker. 
+            Get started building scalable web applications in minutes.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/register" class="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+                Get Started Free
+            </a>
+            <a href="/docs" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all transform hover:scale-105">
+                View Documentation
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Everything You Need to Build
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Our scaffold includes all the essential components for modern web application development
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">High Performance</h3>
+                <p class="text-gray-600">
+                    Built with Quart for async performance and optimized for high-traffic applications
+                </p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Secure by Default</h3>
+                <p class="text-gray-600">
+                    JWT authentication, rate limiting, and security headers configured out of the box
+                </p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Database Ready</h3>
+                <p class="text-gray-600">
+                    MySQL integration with SQLAlchemy ORM and database migrations
+                </p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Docker Ready</h3>
+                <p class="text-gray-600">
+                    Containerized development and deployment with Docker Compose
+                </p>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Monitoring & Logging</h3>
+                <p class="text-gray-600">
+                    Structured logging, error tracking, and performance monitoring
+                </p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="card p-8 text-center hover:shadow-xl transition-all transform hover:-translate-y-2">
+                <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Developer Experience</h3>
+                <p class="text-gray-600">
+                    Hot reload, testing setup, and comprehensive documentation
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- API Preview Section -->
+<div class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                RESTful API Ready
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Get started with our pre-built API endpoints for user management and authentication
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- API Example -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Example API Request</h3>
+                <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+<code>curl -X POST http://localhost:5000/api/v1/users \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer &lt;token&gt;" \
+  -d '{
+    "name": "John Doe",
+    "email": "john@example.com"
+  }'</code></pre>
+            </div>
+            
+            <!-- API Response -->
+            <div class="card p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Example API Response</h3>
+                <pre class="bg-gray-900 text-blue-400 p-4 rounded-lg overflow-x-auto text-sm">
+<code>{
+  "message": "User created successfully",
+  "user": {
+    "id": 123,
+    "name": "John Doe",
+    "email": "john@example.com",
+    "created_at": "2025-06-04T12:00:00Z"
+  }
+}</code></pre>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="/docs" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105 shadow-lg">
+                Explore Full API Documentation
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="gradient-bg text-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold mb-6">
+            Ready to Build Something Amazing?
+        </h2>
+        <p class="text-xl mb-8 text-gray-200">
+            Join thousands of developers who are building the next generation of web applications
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/register" class="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+                Start Building Now
+            </a>
+            <a href="https://github.com" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all transform hover:scale-105">
+                View on GitHub
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Add some interactive elements
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animate feature cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe feature cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    });
+</script>
+{% endblock %}

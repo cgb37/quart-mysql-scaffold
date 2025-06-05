@@ -1,0 +1,44 @@
+{
+  "name": "quart-mysql-scaffold",
+  "version": "1.0.0",
+  "description": "A production-ready Quart application scaffold with MySQL and Docker",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "restart": "npm run stop && npm run start",
+    "dev": "docker-compose up",
+    "logs": "docker-compose logs -f",
+    "logs:web": "docker-compose logs -f web",
+    "logs:db": "docker-compose logs -f db",
+    "build": "docker-compose build",
+    "rebuild": "docker-compose build --no-cache",
+    "shell:web": "docker-compose exec web bash",
+    "shell:db": "docker-compose exec db mysql -u quart_user -p quart_db",
+    "test": "docker-compose exec web python -m pytest",
+    "migrate": "docker-compose exec web python -m alembic upgrade head",
+    "seed": "docker-compose exec web python scripts/seed_database.py",
+    "clean": "docker-compose down -v --remove-orphans && docker system prune -f"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/quart-mysql-scaffold.git"
+  },
+  "keywords": [
+    "quart",
+    "mysql",
+    "docker",
+    "python",
+    "async",
+    "web-framework"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

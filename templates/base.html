@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quart MySQL Scaffold{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 12px;
+            border: 1px solid rgba(209, 213, 219, 0.3);
+        }
+        
+        .navbar {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(209, 213, 219, 0.3);
+        }
+    </style>
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="navbar sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                            QuartApp
+                        </span>
+                    </a>
+                    
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            <a href="/" class="text-gray-900 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                                Home
+                            </a>
+                            <a href="/dashboard" class="text-gray-900 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                                Dashboard
+                            </a>
+                            <a href="/docs" class="text-gray-900 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                                API Docs
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6 space-x-3">
+                        <a href="/login" class="text-gray-900 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            Login
+                        </a>
+                        <a href="/register" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-purple-700 hover:to-blue-700 transition-all transform hover:scale-105">
+                            Sign Up
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-900 hover:text-purple-600 focus:outline-none focus:text-purple-600" onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+                <a href="/" class="text-gray-900 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
+                    Home
+                </a>
+                <a href="/dashboard" class="text-gray-900 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
+                    Dashboard
+                </a>
+                <a href="/docs" class="text-gray-900 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
+                    API Docs
+                </a>
+                <a href="/login" class="text-gray-900 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
+                    Login
+                </a>
+                <a href="/register" class="text-gray-900 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium">
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    <div id="flash-messages" class="fixed top-20 right-4 z-50 space-y-2">
+        <!-- Flash messages will be inserted here by JavaScript -->
+    </div>
+    
+    <!-- Main Content -->
+    <main class="flex-1">
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-20">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">QuartApp</h3>
+                    <p class="text-gray-600">
+                        A modern, scalable web application built with Quart, MySQL, and Docker.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Links</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="/docs" class="hover:text-purple-600 transition-colors">API Documentation</a></li>
+                        <li><a href="/dashboard" class="hover:text-purple-600 transition-colors">Dashboard</a></li>
+                        <li><a href="https://github.com" class="hover:text-purple-600 transition-colors">GitHub</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>support@quartapp.com</li>
+                        <li>+1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-gray-200">
+                <p class="text-center text-gray-600">
+                    © 2025 QuartApp. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function showFlashMessage(message, type = 'info') {
+            const flashContainer = document.getElementById('flash-messages');
+            const messageDiv = document.createElement('div');
+            
+            const typeClasses = {
+                'success': 'bg-green-500 text-white',
+                'error': 'bg-red-500 text-white',
+                'warning': 'bg-yellow-500 text-black',
+                'info': 'bg-blue-500 text-white'
+            };
+            
+            messageDiv.className = `${typeClasses[type]} px-4 py-2 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full opacity-0`;
+            messageDiv.textContent = message;
+            
+            flashContainer.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.classList.remove('translate-x-full', 'opacity-0');
+            }, 100);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                messageDiv.classList.add('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    flashContainer.removeChild(messageDiv);
+                }, 300);
+            }, 5000);
+        }
+        
+        // Global error handler for fetch requests
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+            showFlashMessage('An unexpected error occurred', 'error');
+        });
+    </script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>
